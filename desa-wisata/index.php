@@ -1,5 +1,19 @@
-<?php
+?php
+// Memulai sesi
 session_start();
+
+// Cek apakah pengguna sudah login
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Logout (opsional)
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
